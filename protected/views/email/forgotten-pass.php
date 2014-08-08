@@ -1,0 +1,1 @@
+<p>your pass:</p><?=$pass; ?>

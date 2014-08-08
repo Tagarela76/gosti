@@ -1,0 +1,971 @@
+2013/10/02 14:53:26 [error] [php] Cannot modify header information - headers already sent by (output started at /home/gosti/public_html/protected/modules/admin/controllers/FileController.php:44) (/home/gosti/public_html/lib/framework/web/CHttpRequest.php:803)
+Stack trace:
+#0 /home/gosti/public_html/protected/modules/admin/controllers/FileController.php(47): FileController->redirect()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): FileController->actionSave()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): FileController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): FileController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): FileController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(13): CWebApplication->run()
+REQUEST_URI=/~gosti/admin/File/Save
+in /home/gosti/public_html/protected/modules/admin/controllers/FileController.php (47)
+in /home/gosti/public_html/index.php (13)
+2013/10/04 09:22:11 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Безымянный.png' for key 'name'. The SQL statement executed was: INSERT INTO `files` (`folders_id`, `name`, `path`) VALUES (:folders_id, :name, :path).
+in /home/gosti/public_html/protected/models/FilesDBManager.php (44)
+in /home/gosti/public_html/protected/modules/admin/controllers/FileController.php (21)
+in /home/gosti/public_html/index.php (13)
+2013/10/04 09:22:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Безымянный.png' for key 'name'. The SQL statement executed was: INSERT INTO `files` (`folders_id`, `name`, `path`) VALUES (:folders_id, :name, :path)' in /home/gosti/public_html/lib/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/db/CDbCommand.php(1250): CDbCommand->execute(Array)
+#1 /home/gosti/public_html/protected/models/FilesDBManager.php(44): CDbCommand->insert('files', Array)
+#2 /home/gosti/public_html/protected/modules/admin/controllers/FileController.php(21): FilesDBManager->saveFiledata(Array)
+#3 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): FileController->actionSave()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('Save')
+#13 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/File/Save')
+#14 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/gosti/public_html/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/~gosti/admin/File/Save
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/10/07 20:46:19 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/07 20:46:24 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/08 15:39:35 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=19
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/11 16:33:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api
+---
+2013/10/11 16:33:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api
+---
+2013/10/11 16:34:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api
+---
+2013/10/11 16:34:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action " ".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction(' ')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run(' ')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api/ ')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/%20
+---
+2013/10/11 16:34:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:44:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "folders".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('folders')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('folders')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api/folders')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/folders/
+---
+2013/10/11 16:45:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api
+---
+2013/10/11 16:45:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 16:45:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/11 17:19:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "sys_cpanel".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('sys_cpanel')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('sys_cpanel')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api/sys_cpanel/...')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/sys_cpanel/images/bottombody.jpg
+HTTP_REFERER=http://5.9.156.3/~gosti/api/2
+---
+2013/10/13 12:48:07 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/13 12:48:14 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/13 12:48:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/13 12:50:26 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/13 12:50:47 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/13 12:50:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('AddFolder')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/A...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/AddFolder
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/16 10:59:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=24
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/16 12:58:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "adminer".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('adminer')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/adminer/
+---
+2013/10/16 14:43:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "signin".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('signin')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('signin')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api/signin')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(20): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/signin
+---
+2013/10/16 14:44:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(20): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/10/17 16:52:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('login')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/login/
+---
+2013/10/17 16:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('login')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/login/
+---
+2013/10/17 16:54:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('login')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/login/
+---
+2013/10/21 11:42:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('login')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/login/
+---
+2013/10/21 17:24:12 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=166
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/21 17:24:27 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=167
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/10/23 16:14:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('login')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/login/
+---
+2013/10/23 16:14:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "login".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('login')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/login/
+---
+2013/11/06 14:08:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index".' in /home/gosti/public_html/lib/framework/web/CController.php:483
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CController.php(270): CController->missingAction('')
+#1 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('')
+#2 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('api')
+#3 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/gosti/public_html/index.php(20): CApplication->run()
+#5 {main}
+REQUEST_URI=/~gosti/api/
+---
+2013/11/12 08:33:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/css/kendo.common.min.css".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/css/kendo...')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/admin/css/kendo.common.min.css
+HTTP_REFERER=http://5.9.156.3/~gosti/admin/
+---
+2013/11/12 08:33:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/js/kendo.web.min.js".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/js/kendo....')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/admin/js/kendo.web.min.js
+HTTP_REFERER=http://5.9.156.3/~gosti/admin/
+---
+2013/11/12 08:33:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/css/kendo.bootstrap.min.css".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/css/kendo...')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/admin/css/kendo.bootstrap.min.css
+HTTP_REFERER=http://5.9.156.3/~gosti/admin/
+---
+2013/11/12 08:33:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "wp-admin".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('wp-admin')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/wp-admin/
+---
+2013/11/12 08:33:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/js/kendo.web.min.js".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/js/kendo....')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/admin/js/kendo.web.min.js
+HTTP_REFERER=http://5.9.156.3/~gosti/admin/
+---
+2013/11/12 08:33:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/css/kendo.common.min.css".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/css/kendo...')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/admin/css/kendo.common.min.css
+HTTP_REFERER=http://5.9.156.3/~gosti/admin/
+---
+2013/11/12 08:33:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/css/kendo.bootstrap.min.css".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/css/kendo...')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/admin/css/kendo.bootstrap.min.css
+HTTP_REFERER=http://5.9.156.3/~gosti/admin/
+---
+2013/11/12 08:35:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "adminer".' in /home/gosti/public_html/lib/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('adminer')
+#1 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/gosti/public_html/index.php(20): CApplication->run()
+#3 {main}
+REQUEST_URI=/~gosti/adminer
+---
+2013/11/16 10:20:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=31
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/16 10:21:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=29
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/16 12:24:14 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=36
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/17 14:58:53 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=46
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/19 14:40:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=96
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/20 08:49:42 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/20 08:50:19 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/20 08:51:02 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/20 08:54:27 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/20 09:01:37 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(176): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionForgot()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/forgot
+2013/11/20 09:03:13 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(176): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionForgot()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/forgot
+2013/11/20 11:36:54 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=247
+HTTP_REFERER=http://5.9.156.3/~gosti/
+---
+2013/11/20 18:14:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=124
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/20 18:15:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=116
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/21 11:31:29 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/21 11:33:24 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/21 11:36:02 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/21 11:38:09 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(176): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionForgot()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/forgot
+2013/11/21 13:47:35 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/21 13:56:02 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/21 13:59:59 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/21 14:01:08 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/21 14:01:34 [error] [php] mb_send_mail(/tmp/phpmail.log) [<a href='function.mb-send-mail'>function.mb-send-mail</a>]: failed to open stream: Permission denied (/home/gosti/public_html/protected/extensions/email/Email.php:140)
+Stack trace:
+#0 /home/gosti/public_html/protected/controllers/ApiController.php(222): Email->send()
+#1 /home/gosti/public_html/lib/framework/web/actions/CInlineAction.php(49): ApiController->actionSignup()
+#2 /home/gosti/public_html/lib/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /home/gosti/public_html/lib/framework/web/CController.php(286): ApiController->runAction()
+#4 /home/gosti/public_html/lib/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#5 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): ApiController->run()
+#6 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#7 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /home/gosti/public_html/index.php(20): CWebApplication->run()
+REQUEST_URI=/~gosti/api/signup
+2013/11/23 13:40:25 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=163
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/23 13:40:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('getfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/g...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/getfiles?id=165
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
+2013/11/28 18:17:04 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/gosti/public_html/lib/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/gosti/public_html/lib/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /home/gosti/public_html/lib/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/gosti/public_html/lib/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/gosti/public_html/lib/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/gosti/public_html/lib/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/gosti/public_html/lib/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/gosti/public_html/lib/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/gosti/public_html/lib/framework/web/CWebApplication.php(282): CController->run('delfiles')
+#9 /home/gosti/public_html/lib/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/default/d...')
+#10 /home/gosti/public_html/lib/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /home/gosti/public_html/index.php(20): CApplication->run()
+#12 {main}
+REQUEST_URI=/~gosti/admin/default/delfiles/6009__6010__6011__6012__6013__6014__6015__6016__6017__6018__6019__6020__6021__6022__6023__6024__6025__6026__6027__6028__6029__6030__6031__6032__6033
+HTTP_REFERER=http://5.9.156.3/~gosti/admin
+---
