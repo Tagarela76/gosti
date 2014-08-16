@@ -8,6 +8,8 @@
 
 class FilesDBManager extends FilesManager
 {
+    const RTF_EXTENSION = 'rtf';
+    
     /**
      *
      * @param int $id
@@ -92,6 +94,37 @@ class FilesDBManager extends FilesManager
         $command=$db->createCommand($sql);
         $string = '%'.$string.'%';
         $command->bindParam(":NAME", $string);
+        $rows = $command->queryAll();
+        return $rows;
+    }
+    
+    /**
+     * 
+     * get all files with extension
+     * 
+     * @param int $limit
+     * @param int $offset
+     * 
+     * @return array()
+     */
+    public function getAllRTFFielList($limit, $offset)
+    {
+        //get DB
+        $db = Yii::app()->db;
+        $files_table = Files::tableName();
+        $sql = "SELECT * FROM {$files_table} ".
+                "WHERE SUBSTRING_INDEX( name,  '.', -1 ) = :EXTENSION";
+        
+        if(isset($limit)){
+            $sql .= " LIMIT {$limit}";
+        }
+        if(isset($offset)){
+            $sql .= " OFFSET {$offset}";
+        }
+        
+        $command = $db->createCommand($sql);
+        $ext = self::RTF_EXTENSION;
+        $command->bindParam(":EXTENSION", $ext);
         $rows = $command->queryAll();
         return $rows;
     }

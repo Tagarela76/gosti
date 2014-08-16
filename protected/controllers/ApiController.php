@@ -405,5 +405,18 @@ class ApiController extends Controller
             exit;
         }
     }
+    
+    
+    public function actionGetRTFFileList()
+    {
+        $limit = Yii::app()->request->getParam('limit', null);
+        $offset = Yii::app()->request->getParam('offset', null);
+        
+        $fileList = FilesManager::factory()->getAllRTFFielList($limit, $offset);
+        
+        header('Content-type: application/json');
+        echo CJSON::encode($fileList);
+        Yii::app()->end();
+    }
 
 }
