@@ -95,6 +95,7 @@ class FilesDBManager extends FilesManager
         $string = '%'.$string.'%';
         $command->bindParam(":NAME", $string);
         $rows = $command->queryAll();
+        
         return $rows;
     }
     
@@ -126,6 +127,52 @@ class FilesDBManager extends FilesManager
         $ext = self::RTF_EXTENSION;
         $command->bindParam(":EXTENSION", $ext);
         $rows = $command->queryAll();
+        
+        return $rows;
+    }
+    
+    /**
+     * 
+     * @param string $searchString
+     * @param string $ext
+     * 
+     * @return array()
+     */
+    public function findFileWithExtension($fileName, $ext)
+    {
+        // check string for getting spaces
+        $fileName = explode(' ', $fileName);
+        
+	$searchString = array();
+        //delete all spaces from string
+        foreach($fileName as $str){
+		if($str != ''){
+			$searchString[] = $str;
+		}
+	}
+        
+	//get search string
+        $searchString = implode('%', $searchString);
+        
+        $db = Yii::app()->db;
+        $files_table = Files::tableName();
+        $sql = "SELECT * FROM {$files_table}".
+                " WHERE name LIKE :NAME";
+                
+        if(isset($ext)){
+            $sql .= " AND SUBSTRING_INDEX( name,  '.', -1 ) = :EXTENSION";
+        }
+        
+        $command=$db->createCommand($sql);
+        $searchString = '%'.$searchString.'%';
+        $command->bindParam(":NAME", $searchString);
+        
+        if(isset($ext)){
+            $command->bindParam(":EXTENSION", $ext);
+        }
+        
+        $rows = $command->queryAll();
+        
         return $rows;
     }
 } 

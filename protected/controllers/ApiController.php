@@ -418,5 +418,46 @@ class ApiController extends Controller
         echo CJSON::encode($fileList);
         Yii::app()->end();
     }
+    // functions for SNIP SITE
+    public function actionSnipFileSearch()
+    {
+        $ext = Yii::app()->request->getParam('ext', null);
+        $searchString = Yii::app()->request->getParam('searchString', '');
+        
+        $searchFileList = FilesManager::factory()->findFileWithExtension($searchString, $ext);
+        if(empty($searchFileList)){
+            $searchFileList = 'not found';
+        }
+        header('Content-type: application/json');
+        echo CJSON::encode($searchFileList);
+        Yii::app()->end();
+    }
+    
+    public function actionSnipFileLoad()
+    {
+        $id = Yii::app()->request->getParam('id', null);
+        //var_dump($_REQUEST);die();
+        //$id = 5225;
+        $file = FilesManager::factory()->getRealFileNameById($id);
+        
+        $this->file_force_download_paid(dirname(Yii::app()->basePath) . $file);
+    }
+    
+    public function actionReadSnipFile()
+    {
+        $id = Yii::app()->request->getParam('id', null);
+        
+        $file = FilesManager::factory()->getRealFileNameById($id);
+        $file = dirname(Yii::app()->basePath) . $file;
+        $filename = 'Custom file name for the.pdf';
+
+        header('Content-type: application/pdf');
+        header('Content-Disposition: inline; filename="'.$filename.'"');
+        header('Content-Transfer-Encoding: binary');
+        header('Content-Length: '.filesize($file));
+        header('Accept-Ranges: bytes');
+
+        @readfile($file);
+    }
 
 }
