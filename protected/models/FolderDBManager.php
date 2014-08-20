@@ -87,4 +87,28 @@ class FolderDBManager extends FolderManager{
         $rows = $command->queryAll();
         return $rows;
     }
+    
+    /**
+     * 
+     * get folder by name
+     * 
+     * @param string $name
+     * 
+     * @return boolean|Folder
+     */
+    public function getFolderByName($name)
+    {
+        $folder_table = Folder::tableName();
+        $db = Yii::app()->db;
+        
+        $sql = "SELECT * FROM {$folder_table} WHERE name=:NAME";
+        $command = $db->createCommand($sql);
+        $command->bindParam(":NAME", $name);
+        $rows = $command->queryAll();
+        if(empty($rows)){
+            return false;
+        }
+        
+        return $rows[0];
+    }
 }
