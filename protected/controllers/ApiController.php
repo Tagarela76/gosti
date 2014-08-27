@@ -2,11 +2,11 @@
 
 class ApiController extends Controller
 {
+
     // Members
     /**
      * Key which has to be in HTTP USERNAME and PASSWORD headers
      */
-
     Const APPLICATION_ID = 'ASCCPE';
 
     /**
@@ -233,7 +233,7 @@ class ApiController extends Controller
         $mail = Yii::app()->request->getParam('email', '');
         $pass = Yii::app()->request->getParam('pass', '');
         $validator = new CEmailValidator;
-        if (empty($mail) or (!$validator->validateValue($mail))) {
+        if (empty($mail) or ( !$validator->validateValue($mail))) {
             header('Content-type: application/json');
             echo CJSON::encode(array('error' => 'email validation error'));
             Yii::app()->end();
@@ -364,6 +364,7 @@ class ApiController extends Controller
             $this->file_force_download_paid(dirname(Yii::app()->basePath) . $file);
         }
     }
+
     //load file download
     /**
      * 
@@ -405,56 +406,91 @@ class ApiController extends Controller
             exit;
         }
     }
-    
-    
+
     public function actionGetRTFFileList()
     {
         $limit = Yii::app()->request->getParam('limit', null);
         $offset = Yii::app()->request->getParam('offset', null);
-        
+
         $fileList = FilesManager::factory()->getAllRTFFielList($limit, $offset);
-        
+
         header('Content-type: application/json');
         echo CJSON::encode($fileList);
         Yii::app()->end();
     }
+
     // functions for SNIP SITE
+    /**
+     * search file
+     */
     public function actionSnipFileSearch()
     {
         $ext = Yii::app()->request->getParam('ext', null);
         $searchString = Yii::app()->request->getParam('searchString', '');
-        
+
         $searchFileList = FilesManager::factory()->findFileWithExtension($searchString, $ext);
-        if(empty($searchFileList)){
+        if (empty($searchFileList)) {
             $searchFileList = 'not found';
         }
         header('Content-type: application/json');
         echo CJSON::encode($searchFileList);
         Yii::app()->end();
     }
-    
+
     public function actionSnipFileLoad()
     {
         $id = Yii::app()->request->getParam('id', null);
-        //var_dump($_REQUEST);die();
-        //$id = 5225;
-        $file = FilesManager::factory()->getRealFileNameById($id);
-        
-        $this->file_force_download_paid(dirname(Yii::app()->basePath) . $file);
+        $file = FilesManager::factory()->getFileById($id);
+
+        $fname = $file['name'];
+        $response = array(
+            'error' => false,
+            'errorMsg' => ''
+        );
+
+        $file = dirname(Yii::app()->basePath) . mb_convert_encoding($file['path'], 'Windows-1251', 'UTF-8');
+
+        if (file_exists($file)) {
+            if (ob_get_level()) {
+                ob_end_clean();
+            }
+            // save window show
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+
+            header('Content-Disposition: attachment; filename="' . $fname . '"');
+            header('Content-Transfer-Encoding: binary');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            // read file and send it to user
+            if ($fd = fopen($file, 'rb')) {
+                while (!feof($fd)) {
+                    print fread($fd, 1024);
+                }
+                fclose($fd);
+            }
+        } else {
+            echo 'no file - ' . $file;
+            exit;
+        }
     }
-    
+
     public function actionReadSnipFile()
     {
         $id = Yii::app()->request->getParam('id', null);
-        
-        $file = FilesManager::factory()->getRealFileNameById($id);
-        $file = dirname(Yii::app()->basePath) . $file;
-        $filename = 'Custom file name for the.pdf';
+
+        $file = FilesManager::factory()->getFileById($id);
+        $filename = $file['name'];
+        $file = dirname(Yii::app()->basePath) . $file['path'];
+
+        $file = mb_convert_encoding($file, 'Windows-1251', 'UTF-8');
 
         header('Content-type: application/pdf');
-        header('Content-Disposition: inline; filename="'.$filename.'"');
+        header('Content-Disposition: inline; filename="' . $filename . '"');
         header('Content-Transfer-Encoding: binary');
-        header('Content-Length: '.filesize($file));
+        header('Content-Length: ' . filesize($file));
         header('Accept-Ranges: bytes');
 
         @readfile($file);

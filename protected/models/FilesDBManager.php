@@ -1,21 +1,24 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: lenovo
  * Date: 02.10.13
  * Time: 8:03
  */
-
 class FilesDBManager extends FilesManager
 {
+
     const RTF_EXTENSION = 'rtf';
-    
+
     /**
      *
      * @param int $id
      * @return Files
      */
-    public function getFilesById($id) {
+    public function getFilesById($id)
+    {
+        
     }
 
     /**
@@ -23,11 +26,12 @@ class FilesDBManager extends FilesManager
      * @param int $folder
      * @return array
      */
-    public function getFilesByFolder($folder) {
+    public function getFilesByFolder($folder)
+    {
         $db = Yii::app()->db;
         $files_table = Files::tableName();
         $sql = "SELECT * FROM {$files_table} WHERE folders_id=:PID";
-        $command=$db->createCommand($sql);
+        $command = $db->createCommand($sql);
         $command->bindParam(":PID", $folder);
         $rows = $command->queryAll();
         return $rows;
@@ -38,7 +42,7 @@ class FilesDBManager extends FilesManager
         $db = Yii::app()->db;
         $files_table = Files::tableName();
         $sql = "SELECT path FROM {$files_table} WHERE name=:FNAME";
-        $command=$db->createCommand($sql);
+        $command = $db->createCommand($sql);
         $command->bindParam(":FNAME", $fname);
         $rows = $command->queryScalar();
         return $rows;
@@ -49,7 +53,7 @@ class FilesDBManager extends FilesManager
         $db = Yii::app()->db;
         $files_table = Files::tableName();
         $sql = "SELECT path FROM {$files_table} WHERE id=:ID";
-        $command=$db->createCommand($sql);
+        $command = $db->createCommand($sql);
         $command->bindParam(":ID", $id);
         $rows = $command->queryScalar();
         return $rows;
@@ -59,11 +63,11 @@ class FilesDBManager extends FilesManager
     {
         $db = Yii::app()->db;
         $files_table = Files::tableName();
-        $sql="REPLACE INTO ".$files_table."(folders_id, name, path) VALUES(:folders_id, :name, :path)";
-        $command=$db->createCommand($sql);
-        $command->bindParam(":folders_id",$data['folders_id'],PDO::PARAM_STR);
-        $command->bindParam(":name",$data['name'],PDO::PARAM_STR);
-        $command->bindParam(":path",$data['path'],PDO::PARAM_STR);
+        $sql = "REPLACE INTO " . $files_table . "(folders_id, name, path) VALUES(:folders_id, :name, :path)";
+        $command = $db->createCommand($sql);
+        $command->bindParam(":folders_id", $data['folders_id'], PDO::PARAM_STR);
+        $command->bindParam(":name", $data['name'], PDO::PARAM_STR);
+        $command->bindParam(":path", $data['path'], PDO::PARAM_STR);
         $command->execute();
     }
 
@@ -72,33 +76,33 @@ class FilesDBManager extends FilesManager
         $db = Yii::app()->db;
         $files_table = Files::tableName();
         $command = $db->createCommand()
-                ->delete($files_table, 'id=:id', array(':id'=>$id));
+                ->delete($files_table, 'id=:id', array(':id' => $id));
     }
 
     public function search($string)
     {
         // check string for getting spaces
         $string = explode(' ', $string);
-	$searchString = array();
+        $searchString = array();
         //delete all spaces from string
-        foreach($string as $str){
-		if($str != ''){
-			$searchString[] = $str;
-		}
-	}
-	//get search string
+        foreach ($string as $str) {
+            if ($str != '') {
+                $searchString[] = $str;
+            }
+        }
+        //get search string
         $string = implode('%', $searchString);
         $db = Yii::app()->db;
         $files_table = Files::tableName();
         $sql = "SELECT * FROM {$files_table} WHERE name LIKE :NAME";
-        $command=$db->createCommand($sql);
-        $string = '%'.$string.'%';
+        $command = $db->createCommand($sql);
+        $string = '%' . $string . '%';
         $command->bindParam(":NAME", $string);
         $rows = $command->queryAll();
-        
+
         return $rows;
     }
-    
+
     /**
      * 
      * get all files with extension
@@ -113,24 +117,24 @@ class FilesDBManager extends FilesManager
         //get DB
         $db = Yii::app()->db;
         $files_table = Files::tableName();
-        $sql = "SELECT * FROM {$files_table} ".
+        $sql = "SELECT * FROM {$files_table} " .
                 "WHERE SUBSTRING_INDEX( name,  '.', -1 ) = :EXTENSION";
-        
-        if(isset($limit)){
+
+        if (isset($limit)) {
             $sql .= " LIMIT {$limit}";
         }
-        if(isset($offset)){
+        if (isset($offset)) {
             $sql .= " OFFSET {$offset}";
         }
-        
+
         $command = $db->createCommand($sql);
         $ext = self::RTF_EXTENSION;
         $command->bindParam(":EXTENSION", $ext);
         $rows = $command->queryAll();
-        
+
         return $rows;
     }
-    
+
     /**
      * 
      * @param string $searchString
@@ -142,37 +146,49 @@ class FilesDBManager extends FilesManager
     {
         // check string for getting spaces
         $fileName = explode(' ', $fileName);
-        
-	$searchString = array();
+
+        $searchString = array();
         //delete all spaces from string
-        foreach($fileName as $str){
-		if($str != ''){
-			$searchString[] = $str;
-		}
-	}
-        
-	//get search string
+        foreach ($fileName as $str) {
+            if ($str != '') {
+                $searchString[] = $str;
+            }
+        }
+
+        //get search string
         $searchString = implode('%', $searchString);
-        
+
         $db = Yii::app()->db;
         $files_table = Files::tableName();
-        $sql = "SELECT * FROM {$files_table}".
+        $sql = "SELECT * FROM {$files_table}" .
                 " WHERE name LIKE :NAME";
-                
-        if(isset($ext)){
+
+        if (isset($ext)) {
             $sql .= " AND SUBSTRING_INDEX( name,  '.', -1 ) = :EXTENSION";
         }
-        
-        $command=$db->createCommand($sql);
-        $searchString = '%'.$searchString.'%';
+
+        $command = $db->createCommand($sql);
+        $searchString = '%' . $searchString . '%';
         $command->bindParam(":NAME", $searchString);
-        
-        if(isset($ext)){
+
+        if (isset($ext)) {
             $command->bindParam(":EXTENSION", $ext);
         }
-        
+
         $rows = $command->queryAll();
-        
+
         return $rows;
     }
-} 
+    
+    public function getFileById($id)
+    {
+        $db = Yii::app()->db;
+        $files_table = Files::tableName();
+        $sql = "SELECT * FROM {$files_table} WHERE id=:ID";
+        $command = $db->createCommand($sql);
+        $command->bindParam(":ID", $id);
+        $rows = $command->queryAll();
+        return $rows;
+    }
+
+}

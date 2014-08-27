@@ -33,8 +33,20 @@ class ApiSnipController extends Controller
         header('Content-type: application/json');
         echo CJSON::encode($folders);
     }
-
     
+    public function actionGetFolderTreeArray()
+    {
+        $folderId = Yii::app()->request->getParam('folderId', '');
+        $folders = FolderManager::factory()->getFoldersTreeArray($folderId);
+        header('Content-type: application/json');
+        echo CJSON::encode($folders);
+    }
     
-
+    public function actionGetFileListByFolderId()
+    {
+        $folderId = Yii::app()->request->getParam('folderId', '');
+        $fileList = FilesManager::factory()->getFilesByFolder($folderId);
+        echo CJSON::encode($fileList);
+        Yii::app()->end();
+    }
 }
