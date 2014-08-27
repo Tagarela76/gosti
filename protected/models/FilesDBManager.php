@@ -188,7 +188,26 @@ class FilesDBManager extends FilesManager
         $command = $db->createCommand($sql);
         $command->bindParam(":ID", $id);
         $rows = $command->queryAll();
+        return $rows[0];
+    }
+    
+     public function getFilesByFolderAndExt($folderId, $ext = null)
+    {
+	$db = Yii::app()->db;
+        $files_table = Files::tableName();
+        $sql = "SELECT * FROM {$files_table} WHERE folders_id=:ID";
+        if (isset($ext)) {
+            $sql .= " AND SUBSTRING_INDEX( name,  '.', -1 ) = :EXTENSION";
+        }
+        $command = $db->createCommand($sql);
+     	$command->bindParam(":ID", $folderId);
+        if (isset($ext)) {
+            $command->bindParam(":EXTENSION", $ext);
+        }
+        $rows = $command->queryAll();
+
         return $rows;
     }
+
 
 }

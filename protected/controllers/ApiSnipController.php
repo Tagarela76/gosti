@@ -45,7 +45,8 @@ class ApiSnipController extends Controller
     public function actionGetFileListByFolderId()
     {
         $folderId = Yii::app()->request->getParam('folderId', '');
-        $fileList = FilesManager::factory()->getFilesByFolder($folderId);
+        $ext = Yii::app()->request->getParam('ext', null);
+        $fileList = FilesManager::factory()->getFilesByFolderAndExt($folderId, $ext);
         echo CJSON::encode($fileList);
         Yii::app()->end();
     }
